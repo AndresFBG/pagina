@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Smartphone - Objeto Tecnológico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Consolas', monospace;
+            background: #0a0e27;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ffff;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            background: rgba(15, 20, 45, 0.9);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #00ffff;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6); }
+        }
+
+        h2 {
+            color: #00ff88;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .intro-section {
+            text-align: center;
+        }
+
+        .intro-section img {
+            max-width: 300px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #b0e0e6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .feature-card h3 {
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        .feature-card p {
+            color: #b0e0e6;
+        }
+
+        /* Stop Motion Animation */
+        .stopmotion-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .phone-animation {
+            width: 250px;
+            height: 500px;
+            margin: 2rem auto;
+            position: relative;
+            background: #000;
+            border-radius: 40px;
+            border: 8px solid #00ffff;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), inset 0 0 20px rgba(0, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a4d4d, #1a1a3e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .screen-content {
+            color: #00ffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .app-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .app-icon:nth-child(1) { background: linear-gradient(135deg, #ff006e, #8338ec); }
+        .app-icon:nth-child(2) { background: linear-gradient(135deg, #06ffa5, #00d9ff); }
+        .app-icon:nth-child(3) { background: linear-gradient(135deg, #4361ee, #7209b7); }
+        .app-icon:nth-child(4) { background: linear-gradient(135deg, #f72585, #b5179e); }
+        .app-icon:nth-child(5) { background: linear-gradient(135deg, #00f5ff, #7b2cbf); }
+        .app-icon:nth-child(6) { background: linear-gradient(135deg, #06ffa5, #3a86ff); }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animation-controls {
+            margin-top: 2rem;
+        }
+
+        .animation-controls button {
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            color: #0a0e27;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .animation-controls button:hover {
+            background: linear-gradient(135deg, #00ff88, #00ffff);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Presentation */
+        .presentation {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        .slide {
+            display: none;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 15px;
+            min-height: 400px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide h3 {
+            color: #00ffff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .slide-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .slide-controls button {
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            color: #0a0e27;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .slide-controls button:hover {
+            background: linear-gradient(135deg, #00ff88, #00ffff);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .slide-controls button:disabled {
+            background: #333;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.5;
+        }
+
+        .slide-indicator {
+            text-align: center;
+            margin-top: 1rem;
+            color: #00ffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Video Section */
+        .video-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            background: #f0f0f0;
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .video-placeholder h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .video-placeholder p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .video-placeholder ul {
+            text-align: left;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .video-placeholder li {
+            margin: 0.5rem 0;
+            color: #333;
+        }
+
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            color: #00ffff;
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        footer p {
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Responsive Design - Professional Mobile Optimization */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 2.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            nav {
+                padding: 0.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+            }
+
+            .container {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                letter-spacing: 1.5px;
+                margin-bottom: 1rem;
+            }
+
+            .content-text {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .feature-card {
+                padding: 1.2rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .phone-animation {
+                width: 200px;
+                height: 400px;
+                border-width: 6px;
+                border-radius: 30px;
+            }
+
+            .app-icons {
+                padding: 1.5rem;
+                gap: 0.8rem;
+            }
+
+            .app-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .animation-controls button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.3rem;
+            }
+
+            .slide {
+                padding: 2rem 1.5rem;
+                min-height: 350px;
+            }
+
+            .slide h3 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+                margin-bottom: 1rem;
+            }
+
+            .slide-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .slide-controls button {
+                width: 100%;
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .slide-indicator {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .play-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
+            }
+
+            .time-display {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .audio-controls {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .audio-player-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .audio-player-wrapper h3 {
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+            }
+
+            input[type="range"] {
+                width: 120px;
+            }
+
+            .audio-instructions {
+                padding: 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            section {
+                padding: 2.5rem 1rem;
+                min-height: auto;
+            }
+
+            nav {
+                padding: 0.6rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .container {
+                padding: 1.2rem;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+                margin-bottom: 0.8rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+                margin-bottom: 0.8rem;
+            }
+
+            .content-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .feature-card {
+                padding: 1rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+
+            .phone-animation {
+                width: 180px;
+                height: 360px;
+                border-width: 5px;
+                border-radius: 25px;
+            }
+
+            .app-icons {
+                padding: 1rem;
+                gap: 0.6rem;
+            }
+
+            .app-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+
+            .stopmotion-container p {
+                font-size: 0.85rem;
+                padding: 0 0.5rem;
+            }
+
+            .animation-controls {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            .animation-controls button {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+                margin: 0;
+                width: 100%;
+            }
+
+            .presentation {
+                margin: 1rem auto;
+            }
+
+            .slide {
+                padding: 1.5rem 1rem;
+                min-height: 300px;
+            }
+
+            .slide h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .slide p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 0.8rem;
+            }
+
+            .slide-controls button {
+                padding: 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .slide-indicator {
+                font-size: 0.8rem;
+            }
+
+            .audio-container {
+                margin: 1rem auto;
+            }
+
+            .audio-player-wrapper {
+                padding: 1.5rem 1rem;
+            }
+
+            .audio-player-wrapper h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .custom-audio-player {
+                padding: 1.5rem 1rem;
+            }
+
+            .play-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .time-display {
+                font-size: 0.85rem;
+                letter-spacing: 0.5px;
+            }
+
+            .audio-controls {
+                gap: 0.8rem;
+            }
+
+            .progress-container {
+                height: 6px;
+            }
+
+            .volume-control {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .volume-control span {
+                font-size: 1.3rem;
+            }
+
+            input[type="range"] {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .audio-instructions {
+                padding: 1rem;
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .audio-instructions p {
+                margin-bottom: 0.6rem;
+            }
+
+            footer {
+                padding: 1.2rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            footer p {
+                margin: 0.3rem 0;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+            }
+
+            .phone-animation {
+                width: 160px;
+                height: 320px;
+            }
+
+            .app-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .play-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* Landscape mode optimization for mobile */
+        @media screen and (max-width: 896px) and (orientation: landscape) {
+            section {
+                min-height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .phone-animation {
+                width: 150px;
+                height: 300px;
+            }
+
+            .slide {
+                min-height: 250px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* High DPI screens optimization */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            body::before {
+                background-size: 40px 40px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            nav a, .animation-controls button, .slide-controls button, .play-btn, .file-input-label {
+                min-height: 44px;
+                min-width: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .progress-container {
+                height: 12px;
+            }
+
+            input[type="range"] {
+                height: 12px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* Audio Section */
+        .audio-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .audio-player-wrapper {
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .audio-player-wrapper h3 {
+            color: #00ffff;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .custom-audio-player {
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #0a0e27;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.9);
+        }
+
+        .time-display {
+            color: #00ffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #00ff88);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .volume-control span {
+            color: #00ffff;
+            font-size: 1.5rem;
+        }
+
+        input[type="range"] {
+            width: 150px;
+            height: 6px;
+            background: rgba(0, 255, 255, 0.2);
+            outline: none;
+            border-radius: 10px;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .file-input-wrapper {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .file-input-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            color: #0a0e27;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+
+        #audioFile {
+            display: none;
+        }
+
+        .file-name {
+            color: #00ff88;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .audio-instructions {
+            color: #b0e0e6;
+            line-height: 1.8;
+            margin-top: 1.5rem;
+            text-align: left;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+        }
+
+        .audio-instructions strong {
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#stopmotion">Stop Motion</a></li>
+            <li><a href="#presentacion">Presentación</a></li>
+            <li><a href="#audio">Audio</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio">
+        <div class="container intro-section">
+            <h1>El Smartphone</h1>
+            <h2>Un Objeto Tecnológico que Revolucionó el Mundo</h2>
+            
+            <div class="content-text">
+                <p>El smartphone o teléfono inteligente es uno de los objetos tecnológicos más importantes de nuestra era. Este dispositivo ha transformado completamente la manera en que nos comunicamos, trabajamos, aprendemos y nos entretenemos.</p>
+            </div>
+
+            <div class="content-text">
+                <p>Un smartphone es mucho más que un simple teléfono. Es un ordenador de bolsillo que integra múltiples funcionalidades: cámara fotográfica, reproductor multimedia, navegador GPS, consola de videojuegos, biblioteca digital y centro de comunicación todo en uno.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📱 Comunicación</h3>
+                    <p>Llamadas, mensajería instantánea, videollamadas y redes sociales al alcance de tu mano.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📸 Fotografía</h3>
+                    <p>Cámaras de alta resolución que capturan momentos importantes con calidad profesional.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌐 Internet</h3>
+                    <p>Acceso instantáneo a toda la información del mundo desde cualquier lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎮 Entretenimiento</h3>
+                    <p>Juegos, música, videos y aplicaciones para el tiempo libre.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💼 Productividad</h3>
+                    <p>Herramientas para trabajar, estudiar y organizar tu vida diaria.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🗺️ Navegación</h3>
+                    <p>GPS y mapas que te guían a cualquier destino sin perderte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stopmotion">
+        <div class="container">
+            <h2>Stop Motion: Evolución del Smartphone</h2>
+            <div class="stopmotion-container">
+                <div class="phone-animation" id="phoneAnimation">
+                    <div class="phone-screen">
+                        <div class="screen-content" id="screenContent">
+                            <div class="app-icons">
+                                <div class="app-icon">📱</div>
+                                <div class="app-icon">📧</div>
+                                <div class="app-icon">📸</div>
+                                <div class="app-icon">🎵</div>
+                                <div class="app-icon">🌐</div>
+                                <div class="app-icon">⚙️</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animation-controls">
+                    <button onclick="startAnimation()">▶ Iniciar Animación</button>
+                    <button onclick="pauseAnimation()">⏸ Pausar</button>
+                    <button onclick="resetAnimation()">↺ Reiniciar</button>
+                </div>
+                <p style="margin-top: 1rem; color: #666;">Esta animación muestra la interfaz interactiva de un smartphone moderno</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="presentacion">
+        <div class="container">
+            <h2>Presentación: Historia y Características</h2>
+            <div class="presentation">
+                <div class="slide active" data-slide="1">
+                    <h3>Historia del Smartphone</h3>
+                    <p class="content-text">El primer smartphone fue el IBM Simon, lanzado en 1994. Este dispositivo revolucionario combinaba un teléfono móvil con funciones de PDA (asistente digital personal).</p>
+                    <p class="content-text">Sin embargo, el verdadero boom de los smartphones llegó en 2007 con el lanzamiento del iPhone de Apple, que introdujo la pantalla táctil capacitiva y una interfaz intuitiva que cambió para siempre la industria.</p>
+                    <p class="content-text">Desde entonces, el mercado ha crecido exponencialmente, con millones de modelos y marcas compitiendo por ofrecer la mejor tecnología.</p>
+                </div>
+
+                <div class="slide" data-slide="2">
+                    <h3>Componentes Principales</h3>
+                    <p class="content-text"><strong>Procesador:</strong> El cerebro del dispositivo, responsable de ejecutar todas las aplicaciones y procesos.</p>
+                    <p class="content-text"><strong>Pantalla táctil:</strong> Interfaz principal de interacción, generalmente LCD, OLED o AMOLED.</p>
+                    <p class="content-text"><strong>Memoria RAM:</strong> Permite la multitarea y el funcionamiento fluido de aplicaciones.</p>
+                    <p class="content-text"><strong>Almacenamiento:</strong> Guarda el sistema operativo, aplicaciones y archivos personales.</p>
+                    <p class="content-text"><strong>Cámaras:</strong> Frontal y trasera, con múltiples lentes y sensores avanzados.</p>
+                    <p class="content-text"><strong>Batería:</strong> Fuente de energía, generalmente de ión-litio recargable.</p>
+                </div>
+
+                <div class="slide" data-slide="3">
+                    <h3>Sistemas Operativos</h3>
+                    <p class="content-text"><strong>Android:</strong> Desarrollado por Google, es el sistema operativo más utilizado en el mundo. Es de código abierto y ofrece gran personalización.</p>
+                    <p class="content-text"><strong>iOS:</strong> Sistema exclusivo de Apple para sus iPhone. Conocido por su estabilidad, seguridad y ecosistema integrado.</p>
+                    <p class="content-text">Ambos sistemas ofrecen millones de aplicaciones disponibles en sus respectivas tiendas: Google Play Store y App Store.</p>
+                </div>
+
+                <div class="slide" data-slide="4">
+                    <h3>Impacto Social</h3>
+                    <p class="content-text">Los smartphones han democratizado el acceso a la información y la comunicación, conectando a miles de millones de personas en todo el mundo.</p>
+                    <p class="content-text">Han transformado industrias enteras: desde el comercio electrónico hasta la educación en línea, pasando por el entretenimiento digital y el trabajo remoto.</p>
+                    <p class="content-text">También han generado nuevos desafíos: adicción digital, privacidad de datos y brecha digital entre diferentes sectores de la población.</p>
+                </div>
+
+                <div class="slide" data-slide="5">
+                    <h3>El Futuro del Smartphone</h3>
+                    <p class="content-text">La tecnología continúa avanzando: pantallas plegables, conectividad 5G, inteligencia artificial integrada y realidad aumentada son solo algunas de las innovaciones actuales.</p>
+                    <p class="content-text">Se espera que los smartphones evolucionen hacia dispositivos aún más integrados con nuestra vida diaria, con mayor énfasis en la salud, la sostenibilidad y la interacción natural.</p>
+                    <p class="content-text">El smartphone seguirá siendo una herramienta esencial en la vida moderna, adaptándose constantemente a las necesidades cambiantes de la sociedad.</p>
+                </div>
+            </div>
+
+            <div class="slide-controls">
+                <button onclick="previousSlide()" id="prevBtn">← Anterior</button>
+                <button onclick="nextSlide()" id="nextBtn">Siguiente →</button>
+            </div>
+            <div class="slide-indicator" id="slideIndicator">Diapositiva 1 de 5</div>
+        </div>
+    </section>
+
+    <section id="audio">
+        <div class="container">
+            <h2>Explicación en Audio</h2>
+            <div class="audio-container">
+                <div class="audio-player-wrapper">
+                    <h3>🎙️ Reproductor de Audio</h3>
+                    
+                    <div class="custom-audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" id="playPauseBtn" onclick="togglePlay()">▶</button>
+                            <span class="time-display">
+                                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                            </span>
+                        </div>
+                        
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        
+                        <div class="volume-control">
+                            <span>🔊</span>
+                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                        </div>
+                    </div>
+
+                    <div class="audio-instructions">
+                        <p><strong>Explicación del Smartphone</strong></p>
+                        <p>Escucha la explicación completa sobre el smartphone, sus características, historia y impacto en nuestra sociedad.</p>
+                        <p>Usa los controles del reproductor para play/pause, ajustar el volumen y navegar por el audio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Proyecto Objeto Tecnológico: El Smartphone</p>
+        <p>Una exploración interactiva de la tecnología que cambió el mundo</p>
+    </footer>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 5;
+        let animationRunning = false;
+        let animationInterval;
+
+        // Audio player variables
+        let audioElement = new Audio('audio.mp3');
+        let isPlaying = false;
+
+        // Load audio metadata when ready
+        audioElement.addEventListener('loadedmetadata', function() {
+            document.getElementById('duration').textContent = formatTime(audioElement.duration);
+        });
+
+        // Fallback for duration if metadata doesn't load immediately
+        audioElement.addEventListener('canplay', function() {
+            if (document.getElementById('duration').textContent === '0:00') {
+                document.getElementById('duration').textContent = formatTime(audioElement.duration);
+            }
+        });
+
+        // Play/Pause toggle
+        function togglePlay() {
+            if (isPlaying) {
+                audioElement.pause();
+                document.getElementById('playPauseBtn').textContent = '▶';
+            } else {
+                audioElement.play();
+                document.getElementById('playPauseBtn').textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Update progress bar
+        audioElement.addEventListener('timeupdate', function() {
+            const progress = (audioElement.currentTime / audioElement.duration) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('currentTime').textContent = formatTime(audioElement.currentTime);
+        });
+
+        // Click on progress bar to seek
+        document.getElementById('progressContainer').addEventListener('click', function(e) {
+            if (!audioElement.src) return;
+            
+            const rect = this.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audioElement.currentTime = percent * audioElement.duration;
+        });
+
+        // Volume control
+        document.getElementById('volumeSlider').addEventListener('input', function() {
+            audioElement.volume = this.value / 100;
+        });
+
+        // Set initial volume
+        audioElement.volume = 0.7;
+
+        // Reset play button when audio ends
+        audioElement.addEventListener('ended', function() {
+            document.getElementById('playPauseBtn').textContent = '▶';
+            isPlaying = false;
+            document.getElementById('progressBar').style.width = '0%';
+            audioElement.currentTime = 0;
+        });
+
+        // Format time helper
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicator = document.getElementById('slideIndicator');
+
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+
+            indicator.textContent = `Diapositiva ${currentSlide} de ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        const screens = [
+            { bg: 'linear-gradient(135deg, #0a4d4d, #1a1a3e)', text: 'Inicio' },
+            { bg: 'linear-gradient(135deg, #8338ec, #3a0ca3)', text: 'Mensajes' },
+            { bg: 'linear-gradient(135deg, #06ffa5, #00d9ff)', text: 'Cámara' },
+            { bg: 'linear-gradient(135deg, #f72585, #b5179e)', text: 'Música' },
+            { bg: 'linear-gradient(135deg, #4361ee, #7209b7)', text: 'Navegador' }
+        ];
+
+        let currentScreen = 0;
+
+        function startAnimation() {
+            if (animationRunning) return;
+            animationRunning = true;
+
+            animationInterval = setInterval(() => {
+                currentScreen = (currentScreen + 1) % screens.length;
+                const screen = document.querySelector('.phone-screen');
+                screen.style.background = screens[currentScreen].bg;
+                
+                const content = document.getElementById('screenContent');
+                if (currentScreen === 0) {
+                    content.innerHTML = `
+                        <div class="app-icons">
+                            <div class="app-icon">📱</div>
+                            <div class="app-icon">📧</div>
+                            <div class="app-icon">📸</div>
+                            <div class="app-icon">🎵</div>
+                            <div class="app-icon">🌐</div>
+                            <div class="app-icon">⚙️</div>
+                        </div>
+                    `;
+                } else {
+                    content.innerHTML = `<h2 style="color: #00ffff; font-size: 2rem; text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);">${screens[currentScreen].text}</h2>`;
+                }
+            }, 2000);
+        }
+
+        function pauseAnimation() {
+            animationRunning = false;
+            clearInterval(animationInterval);
+        }
+
+        function resetAnimation() {
+            pauseAnimation();
+            currentScreen = 0;
+            const screen = document.querySelector('.phone-screen');
+            screen.style.background = screens[0].bg;
+            const content = document.getElementById('screenContent');
+            content.innerHTML = `
+                <div class="app-icons">
+                    <div class="app-icon">📱</div>
+                    <div class="app-icon">📧</div>
+                    <div class="app-icon">📸</div>
+                    <div class="app-icon">🎵</div>
+                    <div class="app-icon">🌐</div>
+                    <div class="app-icon">⚙️</div>
+                </div>
+            `;
+        }
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
